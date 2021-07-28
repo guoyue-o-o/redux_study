@@ -1,0 +1,9 @@
+1.构建action,通过创建一个函数，然后返回一个对象，必须携带type属性
+
+2.构建reducer,用来响应action,通过判断action的type,通过return 将数据传给store
+
+3.利用createStore来创建store,构建的时候传递写好的reducer
+
+4.利用store.subscribe()来注册监听
+
+5.当利用store.dispatch()发送一个action的时候，就可以触发监听，再利用store.getState()就可以拿到值
