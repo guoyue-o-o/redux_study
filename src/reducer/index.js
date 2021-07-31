@@ -5,18 +5,17 @@
 
 // 初始化state
 const initState = {
-    value: '默认值'
+    count: 0
 }
 
+// 接收， 做处理，将值返回给store
 const reducer = (state = initState, action) => {
     console.log('================reducer=================== ', state, action);
     switch (action.type) {
-        case 'send_type':
+        case 'add_action':
             return {
-                ...state,
-                ...action
+                count: state.count + 1
             }
-            break;
         default:
             return state;
     }
