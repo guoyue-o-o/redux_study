@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>
+</title>
+
+<body>
+    <script>
+        Array.prototype.copyMap = function (fn, context) {
+            let resArr = []
+            const me = this
+            console.log('================this=================== ',this);
+            console.log('================context=================== ',context);
+
+            const ctx = context ? context : me // 定义上下文
+
+            console.log('================ctx=================== ',ctx);
+
+            if (typeof fn !== 'function') {
+                throw new Error(`${fn} is not a function`)
+            }
+
+            me.forEach((item, index) => {
+                console.log('================fn.call(ctx, item, index, me)=================== ',fn.call(ctx, item, index, me));
+                resArr.push(fn.call(ctx, item, index, me)) // 将回调结果放入数组中
+            })
+
+            return resArr // 返回map后的数组
+        };
+
+        const arr = [1, 2, 3]
+        const arr1 = [4, 5, 6]
+
+        const newArr = arr.copyMap(function (item, index, _arr) {
+            console.log('----this', this, '-----item' ,item, '----index' ,index, '-----_arr' ,_arr)
+            return item * 2
+        }, arr1)
+
+        console.log(newArr)
+    </script>
+
+</body>
+
+</html>
